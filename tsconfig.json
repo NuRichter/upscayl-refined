@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "es2022",
     "module": "commonjs",
     "rootDir": "./",
     "outDir": "./export",
@@ -18,6 +18,7 @@
   "include": [
     "./electron/**/*",
     "./common/**/*",
+    "./test/**/*",
     "./renderer/**/*",
     "scripts/generate-schema.js",
     "scripts/validate-schema.js"

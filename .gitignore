@@ -55,3 +55,12 @@ main/utils/*.js
 flags.ts
 *.p12
 dockerfile
+# Refined engine: model binaries are release assets, not git objects
+resources/refined-models/*.onnx
+tools/model-forge/.cache/
+tools/model-forge/release/
+
+# QA scenario data and outputs
+qa/data/
+/export/test
+*.tsbuildinfo

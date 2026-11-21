@@ -91,11 +91,11 @@ const LensViewer = ({
   };
 
   const originalImage = useMemo(
-    () => "file:///" + sanitizedImagePath,
+    () => "media:///" + sanitizedImagePath,
     [sanitizedImagePath],
   );
   const upscaledImage = useMemo(
-    () => "file:///" + sanitizedUpscaledImagePath,
+    () => "media:///" + sanitizedUpscaledImagePath,
     [sanitizedUpscaledImagePath],
   );
 
