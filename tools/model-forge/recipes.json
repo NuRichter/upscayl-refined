@@ -1,0 +1,72 @@
+{
+  "comment": "Upstream checkpoints are pinned to a Hugging Face revision and a SHA-256. build.py downloads them, forges the Refined graphs and refreshes resources/refined-models/manifest.json.",
+  "sources": {
+    "heart_4x_otf_v2": {
+      "url": "https://huggingface.co/Phips/HEART/resolve/cdad6800ddb011a729b1a1f2b4cf6e0e519bdbe6/onnx/heart_4x_otf_v2_fp32_op17.onnx",
+      "sha256": "2b0d73b363b5ec5fd0dbccb538d74c90c1ff344e4b1dde7c8fd0ec4ad5badb8f"
+    },
+    "heart_4x_otf_gan": {
+      "url": "https://huggingface.co/Phips/HEART/resolve/cdad6800ddb011a729b1a1f2b4cf6e0e519bdbe6/onnx/heart_4x_otf_gan_fp32_op17.onnx",
+      "sha256": "19e8700ce947bca61e5c6f1bbb7f12a3e8b2ca7ed13af7e5c801937df12084a7"
+    },
+    "heart_2x": {
+      "url": "https://huggingface.co/Phips/HEART/resolve/cdad6800ddb011a729b1a1f2b4cf6e0e519bdbe6/onnx/heart_2x_fp32_op17.onnx",
+      "sha256": "08ee34f60303ac086c9b50012fdc3d261086d907756640623035cec1b6030102"
+    },
+    "nerve_4x_otf_fidelity": {
+      "url": "https://huggingface.co/Phips/NERVE/resolve/f096235d764d851c4264ce853bf66f2d8a7f7111/onnx/4x_NERVE_OTF_fidelity_1x3xHxW_fp32_op20.onnx",
+      "sha256": "510308a2f49a1abf1ef1f9a57fd76e6c946f993231f3dc2b3d67d6c95be4c4db"
+    },
+    "nerve_4x_otf_gan": {
+      "url": "https://huggingface.co/Phips/NERVE/resolve/f096235d764d851c4264ce853bf66f2d8a7f7111/onnx/4x_NERVE_OTF_gan_1x3xHxW_fp32_op20.onnx",
+      "sha256": "cb2513d504cdec4694d82c8a226609f75b684963d5f44b1a482987fa987fcdb2"
+    },
+    "nerve_2x_otf_gan": {
+      "url": "https://huggingface.co/Phips/NERVE/resolve/f096235d764d851c4264ce853bf66f2d8a7f7111/onnx/2x_NERVE_OTF_gan_1x3xHxW_fp32_op20.onnx",
+      "sha256": "85a6f5d8afc1b8cd1d2513ab6f87dafc083c921e9d5a7fb948ccaa98f3c7cb38"
+    },
+    "pulse_4x": {
+      "url": "https://huggingface.co/Phips/PULSE/resolve/88198f08a21166c9b934cdca4760eaf1a250cb9d/onnx/4x_pulse.onnx",
+      "sha256": "c616de7389281ad0a5cb9fa09c5ca13b4786f72a33ddf1535c0abefb6893a766"
+    }
+  },
+  "models": [
+    {
+      "id": "refined-heart-4x",
+      "file": "refined-heart-4x-v1.fp16.onnx",
+      "src": "heart_4x_otf_v2",
+      "blend": "heart_4x_otf_gan",
+      "fidelity": true,
+      "fp16": true
+    },
+    {
+      "id": "refined-nerve-4x",
+      "file": "refined-nerve-4x-v1.fp16.onnx",
+      "src": "nerve_4x_otf_fidelity",
+      "blend": "nerve_4x_otf_gan",
+      "fidelity": true,
+      "fp16": true
+    },
+    {
+      "id": "refined-nerve-2x",
+      "file": "refined-nerve-2x-v1.fp16.onnx",
+      "src": "nerve_2x_otf_gan",
+      "fidelity": true,
+      "fp16": true
+    },
+    {
+      "id": "refined-heart-2x",
+      "file": "refined-heart-2x-v1.fp16.onnx",
+      "src": "heart_2x",
+      "fidelity": true,
+      "fp16": true
+    },
+    {
+      "id": "refined-pulse-4x",
+      "file": "refined-pulse-4x-v1.fp16.onnx",
+      "src": "pulse_4x",
+      "fidelity": true,
+      "fp16": true
+    }
+  ]
+}

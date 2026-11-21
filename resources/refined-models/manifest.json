@@ -1,0 +1,194 @@
+{
+  "version": 1,
+  "releaseBase": "https://github.com/NuRichter/upscayl-refined/releases/download/models-v1/",
+  "models": [
+    {
+      "id": "refined-heart-4x",
+      "name": "Refined HEART 4x",
+      "file": "refined-heart-4x-v1.fp16.onnx",
+      "url": "https://github.com/NuRichter/upscayl-refined/releases/download/models-v1/refined-heart-4x-v1.fp16.onnx",
+      "sha256": "afba494dada5e3216540502f4d21c25acc41f00790c96b524ac3e0e00a0423a5",
+      "bytes": 74823547,
+      "license": "Apache-2.0",
+      "source": "Phips/HEART (OTF fidelity + OTF GAN, 2026-11)",
+      "scale": 4,
+      "arch": "HEART transformer, network-interpolated, fidelity head",
+      "ep": [
+        "dml",
+        "cpu"
+      ],
+      "tile": 256,
+      "overlap": 32,
+      "multiple": 32,
+      "detail": true,
+      "fidelity": true,
+      "defaultDetail": 0.5,
+      "bundled": true,
+      "speedHint": 0.08,
+      "tags": [
+        "photo",
+        "quality",
+        "restore"
+      ]
+    },
+    {
+      "id": "refined-nerve-4x",
+      "name": "Refined NERVE 4x",
+      "file": "refined-nerve-4x-v1.fp16.onnx",
+      "url": "https://github.com/NuRichter/upscayl-refined/releases/download/models-v1/refined-nerve-4x-v1.fp16.onnx",
+      "sha256": "94e4354ead23a0d9d8b73c8c7c385d7499bcce617a25e819d8cce714279e8d8e",
+      "bytes": 7239275,
+      "license": "Apache-2.0",
+      "source": "Phips/NERVE (OTF fidelity + OTF GAN, 2026-11)",
+      "scale": 4,
+      "arch": "NERVE pure convolution, network-interpolated, fidelity head",
+      "ep": [
+        "dml",
+        "webgpu",
+        "cpu"
+      ],
+      "tile": 512,
+      "overlap": 24,
+      "detail": true,
+      "fidelity": true,
+      "defaultDetail": 0.5,
+      "bundled": true,
+      "speedHint": 4,
+      "tags": [
+        "photo",
+        "fast",
+        "restore"
+      ]
+    },
+    {
+      "id": "refined-nerve-2x",
+      "name": "Refined NERVE 2x",
+      "file": "refined-nerve-2x-v1.fp16.onnx",
+      "url": "https://github.com/NuRichter/upscayl-refined/releases/download/models-v1/refined-nerve-2x-v1.fp16.onnx",
+      "sha256": "672a4a51607c1ef2737336d164f188656e02f0245bc3d18397d6f5b48284a50a",
+      "bytes": 3580300,
+      "license": "Apache-2.0",
+      "source": "Phips/NERVE 2x OTF GAN (2026-09)",
+      "scale": 2,
+      "arch": "NERVE pure convolution, fidelity head",
+      "ep": [
+        "dml",
+        "webgpu",
+        "cpu"
+      ],
+      "tile": 512,
+      "overlap": 24,
+      "fidelity": true,
+      "bundled": true,
+      "speedHint": 10,
+      "tags": [
+        "photo",
+        "fast",
+        "2x"
+      ]
+    },
+    {
+      "id": "refined-pulse-4x",
+      "name": "Refined PULSE 4x",
+      "file": "refined-pulse-4x-v1.fp16.onnx",
+      "url": "https://github.com/NuRichter/upscayl-refined/releases/download/models-v1/refined-pulse-4x-v1.fp16.onnx",
+      "sha256": "c283296fe926c7f027a6a248aff566d3196c0c27760adae3b6725660d17e1f50",
+      "bytes": 721169,
+      "license": "MIT",
+      "source": "Phips/PULSE 4x (2026-11)",
+      "scale": 4,
+      "arch": "PULSE tiny convolution, fidelity head",
+      "ep": [
+        "dml",
+        "webgpu",
+        "cpu"
+      ],
+      "tile": 768,
+      "overlap": 16,
+      "fidelity": true,
+      "bundled": true,
+      "speedHint": 40,
+      "tags": [
+        "clean",
+        "instant"
+      ]
+    },
+    {
+      "id": "refined-heart-2x",
+      "name": "Refined HEART 2x",
+      "file": "refined-heart-2x-v1.fp16.onnx",
+      "url": "https://github.com/NuRichter/upscayl-refined/releases/download/models-v1/refined-heart-2x-v1.fp16.onnx",
+      "sha256": "79f9eba4b6de311cd48beda1e77e691baf310280d484599d316a8abe0e6605ea",
+      "bytes": 37085677,
+      "license": "Apache-2.0",
+      "source": "Phips/HEART 2x (2026-11)",
+      "scale": 2,
+      "arch": "HEART transformer, fidelity head",
+      "ep": [
+        "dml",
+        "cpu"
+      ],
+      "tile": 256,
+      "overlap": 32,
+      "multiple": 32,
+      "fidelity": true,
+      "bundled": false,
+      "speedHint": 0.1,
+      "tags": [
+        "clean",
+        "2x",
+        "quality"
+      ]
+    },
+    {
+      "id": "ultrasharp-v2-4x",
+      "name": "UltraSharp V2 4x (DAT2)",
+      "file": "4x-UltraSharpV2_fp32_op17.onnx",
+      "url": "https://huggingface.co/Kim2091/UltraSharpV2/resolve/2d1db39ff692c111da92112d49f833e4ad7035ae/4x-UltraSharpV2_fp32_op17.onnx",
+      "sha256": "6c0201e3403745f39a9aa5273c50ed084cf6c4af5a71a4654c30252cf19bf0a5",
+      "bytes": 51800517,
+      "license": "CC-BY-NC-SA-4.0",
+      "source": "Kim2091/UltraSharpV2 (2025-05)",
+      "scale": 4,
+      "arch": "DAT2 transformer",
+      "ep": [
+        "dml",
+        "cpu"
+      ],
+      "tile": 256,
+      "overlap": 32,
+      "bundled": false,
+      "speedHint": 0.07,
+      "tags": [
+        "universal",
+        "art",
+        "non-commercial"
+      ]
+    },
+    {
+      "id": "ultrasharp-v2-lite-4x",
+      "name": "UltraSharp V2 Lite 4x (RealPLKSR)",
+      "file": "4x-UltraSharpV2_Lite_fp16_op17.onnx",
+      "url": "https://huggingface.co/Kim2091/UltraSharpV2/resolve/2d1db39ff692c111da92112d49f833e4ad7035ae/4x-UltraSharpV2_Lite_fp16_op17.onnx",
+      "sha256": "b368dd0460421c3b3484a9a6855c07670f853abde3e0e5a6bfb72f2d5f8d9c50",
+      "bytes": 15281610,
+      "license": "CC-BY-NC-SA-4.0",
+      "source": "Kim2091/UltraSharpV2 Lite (2025-05)",
+      "scale": 4,
+      "arch": "RealPLKSR",
+      "ep": [
+        "dml",
+        "cpu"
+      ],
+      "tile": 512,
+      "overlap": 24,
+      "bundled": false,
+      "speedHint": 1,
+      "tags": [
+        "universal",
+        "art",
+        "non-commercial"
+      ]
+    }
+  ]
+}
