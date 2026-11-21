@@ -1,4 +1,3 @@
-import { FEATURE_FLAGS } from "@common/feature-flags";
 import React from "react";
 import UpscaylSVGLogo from "@/components/icons/upscayl-logo-svg";
 import { useAtomValue } from "jotai";
@@ -9,7 +8,7 @@ export default function Header({ version }: { version: string }) {
 
   return (
     <a
-      href="https://github.com/upscayl/upscayl"
+      href="https://github.com/NuRichter/upscayl-refined"
       target="_blank"
       className={`outline-none focus-visible:ring-2`}
       data-tooltip-id="tooltip"
@@ -21,10 +20,13 @@ export default function Header({ version }: { version: string }) {
           <h1 className="text-3xl font-bold">
             {t("TITLE")}{" "}
             <span className="text-xs">
-              {version} {FEATURE_FLAGS.APP_STORE_BUILD && "Mac"}
+              {version}
             </span>
           </h1>
           <p className="">{t("HEADER.DESCRIPTION")}</p>
+          <p className="text-[10px] uppercase tracking-wide text-base-content/50">
+            Refined · NuRichter Nov Ver.
+          </p>
         </div>
       </div>
     </a>

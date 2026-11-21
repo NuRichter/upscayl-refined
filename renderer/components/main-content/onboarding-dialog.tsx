@@ -9,11 +9,7 @@ import {
 } from "../ui/dialog";
 import { cn } from "@/lib/utils";
 import SelectTheme from "@/components/sidebar/settings-tab/select-theme";
-import {
-  autoUpdateAtom,
-  enableContributionAtom,
-} from "@/atoms/user-settings-atom";
-import { useAtom, useAtomValue } from "jotai";
+import { useAtomValue } from "jotai";
 import useTranslation from "../hooks/use-translation";
 import LanguageSwitcher from "../sidebar/settings-tab/language-switcher";
 import { localeAtom } from "@/atoms/translations-atom";
@@ -62,34 +58,10 @@ export function OnboardingDialog() {
         type: "settings",
         configurationOptions: [
           {
-            type: "switch",
-            label: t("SETTINGS.AUTO_UPDATE.TITLE"),
-            key: "autoUpdate",
-          },
-          {
-            type: "switch",
-            label: t("SETTINGS.ENABLE_CONTRIBUTION.TITLE"),
-            description: t("SETTINGS.ENABLE_CONTRIBUTION.DESCRIPTION"),
-            key: "improveUpscayl",
-          },
-          {
             type: "component",
             label: t("SETTINGS.THEME.TITLE"),
             component: <SelectTheme hideLabel={true} />,
             key: "theme",
-          },
-        ],
-      },
-      {
-        type: "info",
-        title: t("ONBOARDING_DIALOG.STEP_3.TITLE"),
-        description: t("ONBOARDING_DIALOG.STEP_3.DESCRIPTION"),
-        configurationOptions: [
-          {
-            key: "video",
-            type: "video",
-            videoSrc:
-              "https://www.youtube-nocookie.com/embed/3M77flVZlVY?autoplay=1",
           },
         ],
       },
@@ -105,10 +77,6 @@ export function OnboardingDialog() {
   const currentStepData = onboardingSteps[currentStep];
   const isLastStep = currentStep === onboardingSteps.length - 1;
   const isFirstStep = currentStep === 0;
-  const [autoUpdate, setAutoUpdate] = useAtom(autoUpdateAtom);
-  const [enableContribution, setEnableContribution] = useAtom(
-    enableContributionAtom,
-  );
 
   useEffect(() => {
     const storedValue = localStorage.getItem("showOnboarding");
@@ -162,12 +130,6 @@ export function OnboardingDialog() {
               <div
                 key={option.key}
                 className="flex h-full w-full items-center justify-between gap-4"
-                data-tooltip-id="tooltip"
-                data-tooltip-content={
-                  option.key === "improveUpscayl"
-                    ? t("SETTINGS.ENABLE_CONTRIBUTION.DESCRIPTION")
-                    : null
-                }
               >
                 {option.label && (
                   <label
@@ -176,27 +138,6 @@ export function OnboardingDialog() {
                   >
                     {option.label}
                   </label>
-                )}
-                {option.type === "switch" && (
-                  <input
-                    type="checkbox"
-                    className="toggle"
-                    id={option.key}
-                    checked={
-                      option.key === "autoUpdate"
-                        ? autoUpdate
-                        : option.key === "improveUpscayl"
-                          ? enableContribution
-                          : false
-                    }
-                    onChange={(e) => {
-                      if (option.key === "autoUpdate") {
-                        setAutoUpdate(e.target.checked);
-                      } else if (option.key === "improveUpscayl") {
-                        setEnableContribution(e.target.checked);
-                      }
-                    }}
-                  />
                 )}
                 {option.type === "input" && (
                   <input

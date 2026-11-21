@@ -11,7 +11,6 @@ import { useAtom, useAtomValue } from "jotai";
 import { customModelsPathAtom, scaleAtom } from "@/atoms/user-settings-atom";
 import { InputCompression } from "./input-compression";
 import OverwriteToggle from "./overwrite-toggle";
-import { UpscaylCloudModal } from "@/components/upscayl-cloud-modal";
 import { ResetSettingsButton } from "./reset-settings-button";
 import { FEATURE_FLAGS } from "@common/feature-flags";
 import TurnOffNotificationsToggle from "./turn-off-notifications-toggle";
@@ -21,8 +20,7 @@ import { InputTileSize } from "./input-tile-size";
 import LanguageSwitcher from "./language-switcher";
 import { translationAtom } from "@/atoms/translations-atom";
 import { ImageFormat } from "@/lib/valid-formats";
-import EnableContributionToggle from "./enable-contributions-toggle";
-import AutoUpdateToggle from "./auto-update-toggle";
+import RefinedEngineSettings from "./refined-engine-settings";
 import TTAModeToggle from "./tta-mode-toggle";
 import SystemInfo from "./system-info";
 import CopyMetadataToggle from "./copy-metadata-toggle";
@@ -103,9 +101,6 @@ function SettingsTab({
     }
   };
 
-  const upscaylVersion = navigator?.userAgent?.match(
-    /Upscayl\/([\d\.]+\d+)/,
-  )[1];
 
   function disableScrolling() {
     if (timeoutId !== null) {
@@ -200,8 +195,8 @@ function SettingsTab({
 
       <OverwriteToggle />
       <TurnOffNotificationsToggle />
-      <AutoUpdateToggle />
-      <EnableContributionToggle />
+
+      <RefinedEngineSettings />
 
       {/* GPU ID INPUT */}
       <InputGpuId gpuId={gpuId} handleGpuIdChange={handleGpuIdChange} />
@@ -218,25 +213,6 @@ function SettingsTab({
 
       {/* RESET SETTINGS */}
       <ResetSettingsButton />
-
-      {FEATURE_FLAGS.SHOW_UPSCAYL_CLOUD_INFO && (
-        <>
-          <button
-            className="mx-5 mb-5 animate-pulse rounded-btn bg-success p-1 text-sm text-slate-50 shadow-lg shadow-success/40"
-            onClick={() => {
-              setShow(true);
-            }}
-          >
-            {t("INTRO")}
-          </button>
-
-          <UpscaylCloudModal
-            show={show}
-            setShow={setShow}
-            setDontShowCloudModal={setDontShowCloudModal}
-          />
-        </>
-      )}
 
       <SystemInfo />
     </div>
