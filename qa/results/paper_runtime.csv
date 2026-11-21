@@ -1,0 +1,31 @@
+method,image,wall_s,engine_ms
+Bicubic,art,0.76,
+Bicubic,real_waves,0.13,
+Bicubic,real_sign,0.14,
+Bicubic,real_watch,0.11,
+Bicubic,real_railing,0.16,
+Real-ESRGAN (Upscayl Standard),art,4.7,
+Real-ESRGAN (Upscayl Standard),real_waves,2.32,
+Real-ESRGAN (Upscayl Standard),real_sign,2.26,
+Real-ESRGAN (Upscayl Standard),real_watch,2.3,
+Real-ESRGAN (Upscayl Standard),real_railing,2.24,
+UltraSharp (Upscayl classic),art,4.73,
+UltraSharp (Upscayl classic),real_waves,2.26,
+UltraSharp (Upscayl classic),real_sign,2.29,
+UltraSharp (Upscayl classic),real_watch,2.22,
+UltraSharp (Upscayl classic),real_railing,2.26,
+UltraSharp V2 (DAT2),art,29.8,29511
+UltraSharp V2 (DAT2),real_waves,14.35,14007
+UltraSharp V2 (DAT2),real_sign,16.93,16582
+UltraSharp V2 (DAT2),real_watch,16.76,16425
+UltraSharp V2 (DAT2),real_railing,16.6,16274
+Refined NERVE 4x,art,1.74,1609
+Refined NERVE 4x,real_waves,0.85,722
+Refined NERVE 4x,real_sign,0.86,728
+Refined NERVE 4x,real_watch,0.86,733
+Refined NERVE 4x,real_railing,0.87,748
+Refined Auto (HEART),art,21.37,20838
+Refined Auto (HEART),real_waves,39.54,8973
+Refined Auto (HEART),real_sign,39.39,8896
+Refined Auto (HEART),real_watch,39.36,8860
+Refined Auto (HEART),real_railing,9.77,9234
