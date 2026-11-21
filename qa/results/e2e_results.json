@@ -1,0 +1,102 @@
+{
+  "results": [
+    {
+      "name": "window title",
+      "ok": true,
+      "info": "Upscayl Refined"
+    },
+    {
+      "name": "default model is Refined Auto",
+      "ok": true,
+      "info": "Refined Auto (Smart Hybrid)"
+    },
+    {
+      "name": "detail slider visible",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "edition shown in header",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "no analytics or embeds",
+      "ok": true,
+      "info": ""
+    },
+    {
+      "name": "idle: engine not running",
+      "ok": true,
+      "info": "3 procs 353 MB (main:121, gpu-process:83, renderer:150)"
+    },
+    {
+      "name": "refined auto single",
+      "ok": true,
+      "info": "24222 ms, 20 progress events, C:\\Users\\NuRichter\\Documents\\Upscayl-Refined\\_qa\\e2e_out\\KazuScara_upscayl_4x_refined-auto.png"
+    },
+    {
+      "name": "engine process spawned on demand",
+      "ok": true,
+      "info": "4 procs 935 MB"
+    },
+    {
+      "name": "classic engine single",
+      "ok": true,
+      "info": "4558 ms"
+    },
+    {
+      "name": "refined batch (3 files)",
+      "ok": true,
+      "info": "517 ms, 3 files in C:\\Users\\NuRichter\\Documents\\Upscayl-Refined\\_qa\\e2e_out\\upscayl_png_refined-nerve-4x_4x"
+    },
+    {
+      "name": "refined double upscayl = 16x",
+      "ok": true,
+      "info": "3072x2048"
+    },
+    {
+      "name": "status lists all models",
+      "ok": true,
+      "info": "refined-heart-4x:Y refined-nerve-4x:Y refined-nerve-2x:Y refined-pulse-4x:Y refined-heart-2x:n ultrasharp-v2-4x:n ultrasharp-v2-lite-4x:n"
+    },
+    {
+      "name": "download + sha256 verify",
+      "ok": true,
+      "info": "1848 ms {\"ok\":true}"
+    },
+    {
+      "name": "downloaded model runs (fp16 I/O)",
+      "ok": true,
+      "info": "[\"done\",\"C:\\\\Users\\\\NuRichter\\\\Documents\\\\Upscayl-Refined\\\\_qa\\\\e2e_out\\\\kodim23_upscayl_4x_ultrasharp-v2-lite-4x.png\"]"
+    },
+    {
+      "name": "stop cancels refined job",
+      "ok": true,
+      "info": "events 4 -> 4, null"
+    },
+    {
+      "name": "engine exits after keep-warm",
+      "ok": true,
+      "info": "3 procs 353 MB (main:131, gpu-process:81, renderer:141)"
+    }
+  ],
+  "idle1": {
+    "count": 3,
+    "mb": 353,
+    "detail": "main:121, gpu-process:83, renderer:150",
+    "hasEngine": false
+  },
+  "during": {
+    "count": 4,
+    "mb": 935,
+    "detail": "main:132, gpu-process:85, renderer:154, utility:engine:564",
+    "hasEngine": true
+  },
+  "idle2": {
+    "count": 3,
+    "mb": 353,
+    "detail": "main:131, gpu-process:81, renderer:141",
+    "hasEngine": false
+  }
+}

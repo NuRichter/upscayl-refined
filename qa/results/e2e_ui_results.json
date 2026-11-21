@@ -1,0 +1,32 @@
+[
+  {
+    "name": "version label",
+    "ok": true,
+    "info": "3.0.0"
+  },
+  {
+    "name": "drag-and-drop loads image (webUtils path)",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "click Upscayl button",
+    "ok": true,
+    "info": ""
+  },
+  {
+    "name": "result shown in viewer",
+    "ok": true,
+    "info": "4800"
+  },
+  {
+    "name": "clipboard paste saved + shown",
+    "ok": true,
+    "info": "ok 42408 files=1 bytes"
+  },
+  {
+    "name": "paste wrote file into output folder",
+    "ok": true,
+    "info": ".temp-15-0-37-clip.png"
+  }
+]
