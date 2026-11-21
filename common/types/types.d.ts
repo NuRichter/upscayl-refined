@@ -1,5 +1,14 @@
 import { ImageFormat } from "@electron/types/types";
 
+/** Options that only the Refined (ONNX) engine reads. */
+export type RefinedOptions = {
+  /** 0..1 network-interpolation mix: 0 = faithful, 1 = sharp texture; <0 = model/auto default */
+  detail?: number;
+  /** keep the input colors in the low-frequency band (default true) */
+  chromaLock?: boolean;
+  backend?: "auto" | "dml" | "webgpu" | "cpu";
+};
+
 export type ImageUpscaylPayload = {
   imagePath: string;
   outputPath: string;
@@ -15,6 +24,7 @@ export type ImageUpscaylPayload = {
   tileSize: number;
   ttaMode: boolean;
   copyMetadata: boolean;
+  refined?: RefinedOptions;
 };
 
 export type DoubleUpscaylPayload = {
@@ -34,6 +44,7 @@ export type DoubleUpscaylPayload = {
   tileSize: number;
   ttaMode: boolean;
   copyMetadata: boolean;
+  refined?: RefinedOptions;
 };
 
 export type BatchUpscaylPayload = {
@@ -50,4 +61,5 @@ export type BatchUpscaylPayload = {
   tileSize: number;
   ttaMode: boolean;
   copyMetadata: boolean;
+  refined?: RefinedOptions;
 };

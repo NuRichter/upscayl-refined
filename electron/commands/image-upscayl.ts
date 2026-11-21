@@ -22,6 +22,8 @@ import getDirectoryFromPath from "../../common/get-directory-from-path";
 import { MODELS } from "../../common/models-list";
 import { getPlatform } from "../utils/get-device-specs";
 import { copyMetadata } from "../utils/copy-metadata";
+import { isRefinedPayloadModel, refinedImageUpscayl } from "./refined-upscayl";
+import { ensureLegacyInput } from "../utils/legacy-input";
 
 const imageUpscayl = async (event, payload: ImageUpscaylPayload) => {
   const mainWindow = getMainWindow();
@@ -29,6 +31,11 @@ const imageUpscayl = async (event, payload: ImageUpscaylPayload) => {
   if (!mainWindow) {
     logit("No main window found");
     return;
+  }
+
+  // Refined (ONNX) models run in the on-demand engine process
+  if (isRefinedPayloadModel(payload.model)) {
+    return refinedImageUpscayl(payload, "single");
   }
 
   // GET VARIABLES
@@ -42,11 +49,12 @@ const imageUpscayl = async (event, payload: ImageUpscaylPayload) => {
   const gpuId = payload.gpuId as string;
   const saveImageAs = payload.saveImageAs as ImageFormat;
   const overwrite = payload.overwrite as boolean;
-  const imagePath = decodePath(payload.imagePath);
+  const originalImagePath = decodePath(payload.imagePath);
+  const imagePath = await ensureLegacyInput(originalImagePath);
   let inputDir = getDirectoryFromPath(imagePath);
   let outputDir = decodePath(payload.outputPath);
   const fileNameWithExt = getFilenameFromPath(imagePath);
-  const fileName = parse(fileNameWithExt).name;
+  const fileName = parse(getFilenameFromPath(originalImagePath)).name;
 
   const outFile =
     outputDir +
@@ -161,7 +169,7 @@ const imageUpscayl = async (event, payload: ImageUpscaylPayload) => {
         if (payload.copyMetadata) {
           logit("🏷️ Copying metadata...");
           try {
-            await copyMetadata(imagePath, outFile);
+            await copyMetadata(originalImagePath, outFile);
             logit("✅ Metadata copied to: ", outFile);
           } catch (error) {
             logit("❌ Error copying metadata: ", error);

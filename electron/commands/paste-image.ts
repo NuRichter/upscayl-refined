@@ -13,6 +13,7 @@ interface IClipboardFileParameters {
   size: number;
   type: string;
   encodedBuffer: string;
+  data?: Uint8Array | null;
 }
 
 const isImageFormatValid = (format: string): format is ImageFormat => {
@@ -23,7 +24,9 @@ const createTempFileFromClipboard = async (
   inputFileParams: IClipboardFileParameters,
 ): Promise<string> => {
   const tempFilePath = path.join(inputFileParams.path, inputFileParams.name);
-  const buffer = Buffer.from(inputFileParams.encodedBuffer, "base64");
+  const buffer = inputFileParams.data
+    ? Buffer.from(inputFileParams.data)
+    : Buffer.from(inputFileParams.encodedBuffer, "base64");
 
   await fs.promises.writeFile(tempFilePath, buffer);
   return tempFilePath;
@@ -35,7 +38,9 @@ const pasteImage = async (
 ) => {
   const mainWindow = getMainWindow();
   if (!mainWindow) return;
-  if (!file || !file.name || !file.encodedBuffer) return;
+  if (!file || !file.name || (!file.encodedBuffer && !file.data)) return;
+  // only plain file names inside the chosen output folder
+  if (path.basename(file.name) !== file.name) return;
   if (isImageFormatValid(file.extension)) {
     try {
       const imageFilePath = await createTempFileFromClipboard(file);

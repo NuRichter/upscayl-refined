@@ -23,10 +23,16 @@ import decodePath from "../../common/decode-path";
 import getDirectoryFromPath from "../../common/get-directory-from-path";
 import { MODELS } from "../../common/models-list";
 import { copyMetadata } from "../utils/copy-metadata";
+import { isRefinedPayloadModel, refinedImageUpscayl } from "./refined-upscayl";
+import { ensureLegacyInput } from "../utils/legacy-input";
 
 const doubleUpscayl = async (event, payload: DoubleUpscaylPayload) => {
   const mainWindow = getMainWindow();
   if (!mainWindow) return;
+
+  if (isRefinedPayloadModel(payload.model)) {
+    return refinedImageUpscayl(payload, "double");
+  }
 
   const tileSize = payload.tileSize;
   const compression = payload.compression;
@@ -37,11 +43,12 @@ const doubleUpscayl = async (event, payload: DoubleUpscaylPayload) => {
   const model = payload.model;
   const gpuId = payload.gpuId as string;
   const saveImageAs = payload.saveImageAs as ImageFormat;
-  const imagePath = decodePath(payload.imagePath);
+  const originalImagePath = decodePath(payload.imagePath);
+  const imagePath = await ensureLegacyInput(originalImagePath);
   let inputDir = getDirectoryFromPath(imagePath);
   let outputDir = decodePath(payload.outputPath);
   const fullfileName = getFilenameFromPath(imagePath);
-  const fileName = parse(fullfileName).name;
+  const fileName = parse(getFilenameFromPath(originalImagePath)).name;
 
   const isDefaultModel = model in MODELS;
 
@@ -133,7 +140,7 @@ const doubleUpscayl = async (event, payload: DoubleUpscaylPayload) => {
       if (payload.copyMetadata) {
         logit("🏷️ Copying metadata...");
         try {
-          await copyMetadata(imagePath, outFile);
+          await copyMetadata(originalImagePath, outFile);
           logit("✅ Metadata copied to: ", outFile);
         } catch (error) {
           logit("❌ Error copying metadata: ", error);

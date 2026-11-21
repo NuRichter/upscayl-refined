@@ -23,3 +23,22 @@ export const MODELS = {
 };
 
 export type ModelId = keyof typeof MODELS;
+
+/** Models served by the Refined (ONNX) engine, in display order. */
+export const REFINED_MODELS = [
+  "refined-auto",
+  "refined-heart-4x",
+  "refined-nerve-4x",
+  "refined-nerve-2x",
+  "refined-pulse-4x",
+  "refined-heart-2x",
+  "ultrasharp-v2-4x",
+  "ultrasharp-v2-lite-4x",
+] as const;
+
+export type RefinedModelId = (typeof REFINED_MODELS)[number];
+
+/** Models whose graph exposes the runtime "detail" mix. */
+export const DETAIL_MODELS: readonly string[] = ["refined-auto", "refined-heart-4x", "refined-nerve-4x"];
+
+export const isRefinedModel = (id: string) => (REFINED_MODELS as readonly string[]).includes(id) || id.endsWith(".onnx");

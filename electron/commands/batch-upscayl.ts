@@ -16,10 +16,15 @@ import { BatchUpscaylPayload } from "../../common/types/types";
 import showNotification from "../utils/show-notification";
 import { MODELS } from "../../common/models-list";
 import { copyMetadata } from "../utils/copy-metadata";
+import { isRefinedPayloadModel, refinedBatchUpscayl } from "./refined-upscayl";
 
 const batchUpscayl = async (event, payload: BatchUpscaylPayload) => {
   const mainWindow = getMainWindow();
   if (!mainWindow) return;
+
+  if (isRefinedPayloadModel(payload.model)) {
+    return refinedBatchUpscayl(payload);
+  }
 
   const tileSize = payload.tileSize;
   const compression = payload.compression;
@@ -119,7 +124,7 @@ const batchUpscayl = async (event, payload: BatchUpscaylPayload) => {
             const originalFile = inputDir + slash + file;
             if (fs.existsSync(outFile) && fs.existsSync(originalFile)) {
                 try {
-                  await copyMetadata(inputDir, outFile);
+                  await copyMetadata(originalFile, outFile);
                   logit("✅ Metadata copied to: ", outFile);
                 } catch (error) {
                   logit("❌ Error copying metadata: ", error);
