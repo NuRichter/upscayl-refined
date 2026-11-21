@@ -4,10 +4,10 @@ const useUpscaylVersion = () => {
   const [version, setVersion] = useState<string | null>(null);
 
   useEffect(() => {
-    const upscaylVersion = navigator?.userAgent?.match(
-      /Upscayl\/([\d\.]+\d+)/,
-    )?.[1];
-    setVersion(upscaylVersion);
+    window.electron
+      .getAppVersion()
+      .then((v) => setVersion((v ?? "").split(" ")[0] || null))
+      .catch(() => setVersion(null));
   }, []);
 
   return version;

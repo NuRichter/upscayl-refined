@@ -17,6 +17,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { translationAtom } from "@/atoms/translations-atom";
 import { SelectImageScale } from "../settings-tab/select-image-scale";
 import SelectModelDialog from "./select-model-dialog";
+import RefinedDetailSlider from "./refined-detail-slider";
 import { ImageFormat } from "@/lib/valid-formats";
 
 interface IProps {
@@ -158,6 +159,8 @@ function UpscaylSteps({
 
           <SelectModelDialog />
         </div>
+
+        <RefinedDetailSlider />
 
         {!batchMode && (
           <div className="flex items-center gap-1">

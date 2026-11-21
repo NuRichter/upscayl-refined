@@ -80,7 +80,8 @@ export const translationAtom = atom((get) => {
     key: NestedKeyOf<Translations>,
     params: Record<string, string> = {},
   ): string => {
-    const template = getNestedTranslation(translations[locale], key);
+    let template = getNestedTranslation(translations[locale] ?? en, key);
+    if (template === key) template = getNestedTranslation(en, key);
 
     // Replace placeholders with parameters, e.g., {name} => John
     return Object.keys(params).reduce(

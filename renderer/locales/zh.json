@@ -13,7 +13,9 @@
   },
   "SETTINGS": {
     "TITLE": "设置",
-    "CHANGE_LANGUAGE": { "TITLE": "更改语言" },
+    "CHANGE_LANGUAGE": {
+      "TITLE": "更改语言"
+    },
     "IMAGE_COMPRESSION": {
       "TITLE": "图片压缩",
       "DESCRIPTION": "PNG 压缩是无损的，因此可能不会显著减少文件大小，而更高的压缩比值可能会影响性能。JPG 和 WebP 压缩是有损的。"
@@ -108,6 +110,17 @@
     },
     "SYSTEM_INFO": {
       "TITLE": "系统信息"
+    },
+    "REFINED": {
+      "TITLE": "REFINED ENGINE",
+      "COLOR_LOCK_TITLE": "Color lock",
+      "COLOR_LOCK_DESCRIPTION": "Keeps the original colors in the low frequencies so the AI cannot shift tones.",
+      "BACKEND_TITLE": "Backend",
+      "BACKEND_DESCRIPTION": "Auto picks the fastest provider per model (DirectML, WebGPU, CPU fallback).",
+      "KEEP_WARM_TITLE": "Keep engine warm (seconds)",
+      "KEEP_WARM_DESCRIPTION": "After the last job the engine stays loaded this long, then exits and frees all GPU memory.",
+      "UI_GPU_TITLE": "UI hardware acceleration",
+      "UI_GPU_DESCRIPTION": "Off = lightest idle (the UI is drawn on the CPU). On = smoother zooming, more idle memory. Restart the app to apply."
     }
   },
   "APP": {
@@ -156,8 +169,46 @@
         "high-fidelity-4x": {
           "NAME": "高保真",
           "DESCRIPTION": "适用于各种图像，注重真实细节和平滑纹理。"
+        },
+        "refined-auto": {
+          "NAME": "Refined Auto (Smart Hybrid)",
+          "DESCRIPTION": "Analyzes every image (JPEG blocking, noise, blur, photo or art) and chooses the model and detail level for it."
+        },
+        "refined-heart-4x": {
+          "NAME": "Refined HEART 4x",
+          "DESCRIPTION": "Best quality. 2026 transformer blended between a faithful and a sharp checkpoint. Slower."
+        },
+        "refined-nerve-4x": {
+          "NAME": "Refined NERVE 4x",
+          "DESCRIPTION": "Fast and strong. Pure-convolution restorer for photos, JPEGs and phone shots."
+        },
+        "refined-nerve-2x": {
+          "NAME": "Refined NERVE 2x",
+          "DESCRIPTION": "Native 2x restoration, very fast."
+        },
+        "refined-pulse-4x": {
+          "NAME": "Refined PULSE 4x",
+          "DESCRIPTION": "Instant upscaling for clean, high-quality inputs."
+        },
+        "refined-heart-2x": {
+          "NAME": "Refined HEART 2x",
+          "DESCRIPTION": "Native 2x transformer for clean images."
+        },
+        "ultrasharp-v2-4x": {
+          "NAME": "UltraSharp V2 (Non-Commercial)",
+          "DESCRIPTION": "DAT2 universal upscaler by Kim2091. Strong on art and illustrations."
+        },
+        "ultrasharp-v2-lite-4x": {
+          "NAME": "UltraSharp V2 Lite (Non-Commercial)",
+          "DESCRIPTION": "RealPLKSR version of UltraSharp V2, much faster."
         }
-      }
+      },
+      "REFINED_TITLE": "Refined Engine",
+      "REFINED_SUBTITLE": "ONNX Runtime on your GPU (DirectML/WebGPU). Newest models, seam-free tiling, starts only when needed.",
+      "CLASSIC_TITLE": "Classic Engine (NCNN)",
+      "DOWNLOAD": "Download",
+      "DOWNLOADING": "Downloading",
+      "NOT_INSTALLED": "Not installed"
     },
     "DOUBLE_UPSCAYL": {
       "TITLE": "双重升图",
@@ -222,6 +273,13 @@
     },
     "DIALOG_BOX": {
       "CLOSE": "关闭"
+    },
+    "DETAIL": {
+      "TITLE": "Detail",
+      "DESCRIPTION": "Left keeps the result faithful and clean, right adds sharper texture.",
+      "AUTO": "Auto",
+      "FAITHFUL": "Faithful",
+      "SHARP": "Sharp"
     }
   },
   "ERRORS": {
@@ -277,7 +335,7 @@
       "TITLE": "元数据警告",
       "DESCRIPTION": "在某些系统上，JPG 以外的格式可能无法显示元数据。如有需要，请使用专门的工具查看元数据。"
     }
-  },    
+  },
   "UPSCAYL_CLOUD": {
     "COMING_SOON": "即将推出！",
     "CATCHY_PHRASE_1": "该与错误、硬件问题、质量妥协和漫长的等待告别喽！",

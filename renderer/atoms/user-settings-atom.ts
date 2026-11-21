@@ -10,7 +10,7 @@ export const customModelsPathAtom = atomWithStorage<string | null>(
 
 export const selectedModelIdAtom = atomWithStorage<ModelId | string>(
   "selectedModelId",
-  "upscayl-standard-4x",
+  "refined-auto",
 );
 export const doubleUpscaylAtom = atomWithStorage("doubleUpscayl", false);
 export const gpuIdAtom = atomWithStorage("gpuId", "");
@@ -79,12 +79,14 @@ export const tileSizeAtom = atomWithStorage<number | null>("tileSize", null);
 // CLIENT SIDE ONLY
 export const showSidebarAtom = atomWithStorage("showSidebar", true);
 
-export const autoUpdateAtom = atomWithStorage("autoUpdate", true);
-
-export const enableContributionAtom = atomWithStorage(
-  "enableContribution",
-  true,
+/** Refined engine: -1 = automatic, otherwise 0..1 (faithful -> sharp). */
+export const refinedDetailAtom = atomWithStorage<number>("refinedDetail", -1);
+export const refinedChromaLockAtom = atomWithStorage<boolean>("refinedChromaLock", true);
+export const refinedBackendAtom = atomWithStorage<"auto" | "dml" | "webgpu" | "cpu">(
+  "refinedBackend",
+  "auto",
 );
+export const refinedKeepWarmAtom = atomWithStorage<number>("refinedKeepWarm", 45);
 
 export const userStatsAtom = atomWithStorage("userStats", {
   totalUpscayls: 0,

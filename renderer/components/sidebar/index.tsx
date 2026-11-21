@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import {
   batchModeAtom,
@@ -21,6 +21,10 @@ import {
   userStatsAtom,
   ttaModeAtom,
   copyMetadataAtom,
+  refinedDetailAtom,
+  refinedChromaLockAtom,
+  refinedBackendAtom,
+  refinedKeepWarmAtom,
 } from "../../atoms/user-settings-atom";
 import useLogger from "../hooks/use-logger";
 import {
@@ -32,7 +36,6 @@ import { useToast } from "@/components/ui/use-toast";
 import UpscaylSteps from "./upscayl-tab/upscayl-steps";
 import SettingsTab from "./settings-tab";
 import Footer from "../footer";
-import { NewsModal } from "../news-modal";
 import Tabs from "../tabs";
 import Header from "../header";
 import { ChevronLeftIcon } from "lucide-react";
@@ -95,6 +98,19 @@ const Sidebar = ({
   const setUserStats = useSetAtom(userStatsAtom);
   const ttaMode = useAtomValue(ttaModeAtom);
   const [copyMetadata] = useAtom(copyMetadataAtom);
+  const refinedDetail = useAtomValue(refinedDetailAtom);
+  const refinedChromaLock = useAtomValue(refinedChromaLockAtom);
+  const refinedBackend = useAtomValue(refinedBackendAtom);
+  const keepWarm = useAtomValue(refinedKeepWarmAtom);
+  // the main process starts with defaults; push the saved keep-warm once
+  useEffect(() => {
+    window.electron.send(ELECTRON_COMMANDS.REFINED_ENGINE_CONFIG, { keepWarmSec: keepWarm });
+  }, [keepWarm]);
+  const refined = {
+    detail: refinedDetail,
+    chromaLock: refinedChromaLock,
+    backend: refinedBackend,
+  };
 
   const upscaylHandler = async () => {
     logit("🔄 Resetting Upscaled Image Path");
@@ -120,6 +136,7 @@ const Sidebar = ({
             tileSize,
             ttaMode,
             copyMetadata,
+            refined,
           },
         );
         setUserStats((prev) => ({
@@ -149,6 +166,7 @@ const Sidebar = ({
             tileSize,
             ttaMode,
             copyMetadata,
+            refined,
           },
         );
         setUserStats((prev) => ({
@@ -175,6 +193,7 @@ const Sidebar = ({
           tileSize,
           ttaMode,
           copyMetadata,
+          refined,
         });
         setUserStats((prev) => ({
           ...prev,
@@ -218,8 +237,6 @@ const Sidebar = ({
         )}
 
         <Header version={version} />
-
-        <NewsModal />
 
         <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
 

@@ -13,7 +13,9 @@
   },
   "SETTINGS": {
     "TITLE": "Pengaturan",
-    "CHANGE_LANGUAGE": { "TITLE": "Ubah Bahasa" },
+    "CHANGE_LANGUAGE": {
+      "TITLE": "Ubah Bahasa"
+    },
     "IMAGE_COMPRESSION": {
       "TITLE": "Kompresi Gambar",
       "DESCRIPTION": "Kompresi PNG bersifat lossless, sehingga mungkin tidak mengurangi ukuran file secara signifikan dan nilai kompresi yang lebih tinggi dapat mempengaruhi kinerja. Kompresi JPG dan WebP bersifat lossy."
@@ -108,6 +110,17 @@
     },
     "SYSTEM_INFO": {
       "TITLE": "Info Sistem"
+    },
+    "REFINED": {
+      "TITLE": "MESIN REFINED",
+      "COLOR_LOCK_TITLE": "Kunci warna",
+      "COLOR_LOCK_DESCRIPTION": "Menjaga warna asli di frekuensi rendah agar AI tidak menggeser nada warna.",
+      "BACKEND_TITLE": "Backend",
+      "BACKEND_DESCRIPTION": "Otomatis memilih provider tercepat per model (DirectML, WebGPU, cadangan CPU).",
+      "KEEP_WARM_TITLE": "Mesin tetap siaga (detik)",
+      "KEEP_WARM_DESCRIPTION": "Setelah tugas terakhir mesin tetap dimuat selama ini, lalu keluar dan membebaskan seluruh memori GPU.",
+      "UI_GPU_TITLE": "Akselerasi GPU untuk tampilan",
+      "UI_GPU_DESCRIPTION": "Mati = idle paling ringan (UI digambar CPU). Nyala = zoom lebih mulus, memori idle lebih besar. Perlu restart aplikasi."
     }
   },
   "APP": {
@@ -156,8 +169,46 @@
         "high-fidelity-4x": {
           "NAME": "High Fidelity",
           "DESCRIPTION": "Untuk semua jenis gambar dengan fokus pada detail realistis dan tekstur halus."
+        },
+        "refined-auto": {
+          "NAME": "Refined Auto (Hibrida Pintar)",
+          "DESCRIPTION": "Menganalisis tiap gambar (blok JPEG, noise, blur, foto atau ilustrasi) lalu memilih model dan tingkat detail yang pas."
+        },
+        "refined-heart-4x": {
+          "NAME": "Refined HEART 4x",
+          "DESCRIPTION": "Kualitas terbaik. Transformer 2026 yang dipadukan antara checkpoint setia-asli dan tajam. Lebih lambat."
+        },
+        "refined-nerve-4x": {
+          "NAME": "Refined NERVE 4x",
+          "DESCRIPTION": "Cepat dan kuat. Restorer konvolusi murni untuk foto, JPEG, dan jepretan HP."
+        },
+        "refined-nerve-2x": {
+          "NAME": "Refined NERVE 2x",
+          "DESCRIPTION": "Restorasi 2x native, sangat cepat."
+        },
+        "refined-pulse-4x": {
+          "NAME": "Refined PULSE 4x",
+          "DESCRIPTION": "Upscale instan untuk gambar yang sudah bersih dan berkualitas."
+        },
+        "refined-heart-2x": {
+          "NAME": "Refined HEART 2x",
+          "DESCRIPTION": "Transformer 2x native untuk gambar bersih."
+        },
+        "ultrasharp-v2-4x": {
+          "NAME": "UltraSharp V2 (Non-Komersial)",
+          "DESCRIPTION": "Upscaler universal DAT2 karya Kim2091. Kuat untuk ilustrasi dan artwork."
+        },
+        "ultrasharp-v2-lite-4x": {
+          "NAME": "UltraSharp V2 Lite (Non-Komersial)",
+          "DESCRIPTION": "Versi RealPLKSR dari UltraSharp V2, jauh lebih cepat."
         }
-      }
+      },
+      "REFINED_TITLE": "Mesin Refined",
+      "REFINED_SUBTITLE": "ONNX Runtime di GPU (DirectML/WebGPU). Model terbaru, tiling tanpa sambungan, hanya aktif saat dipakai.",
+      "CLASSIC_TITLE": "Mesin Klasik (NCNN)",
+      "DOWNLOAD": "Unduh",
+      "DOWNLOADING": "Mengunduh",
+      "NOT_INSTALLED": "Belum terpasang"
     },
     "DOUBLE_UPSCAYL": {
       "TITLE": "Double Upscayl",
@@ -222,6 +273,13 @@
     },
     "DIALOG_BOX": {
       "CLOSE": "Tutup"
+    },
+    "DETAIL": {
+      "TITLE": "Detail",
+      "DESCRIPTION": "Kiri menjaga hasil tetap setia dan bersih, kanan menambah tekstur yang lebih tajam.",
+      "AUTO": "Otomatis",
+      "FAITHFUL": "Setia",
+      "SHARP": "Tajam"
     }
   },
   "ERRORS": {

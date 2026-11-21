@@ -136,7 +136,7 @@ const MainContent = ({
       return;
     }
     const type = e.dataTransfer.items[0].type;
-    const filePath = e.dataTransfer.files[0].path;
+    const filePath = window.electron.getPathForFile(e.dataTransfer.files[0]);
     const extension = e.dataTransfer.files[0].name.split(".").at(-1);
     logit("⤵️ Dropped file: ", JSON.stringify({ type, filePath, extension }));
     if (
@@ -178,6 +178,7 @@ const MainContent = ({
           size: fileObject.size,
           type: fileObject.type.split("/")[0],
           encodedBuffer: "",
+          data: null as Uint8Array | null,
         };
 
         logit(
@@ -196,14 +197,9 @@ const MainContent = ({
           const reader = new FileReader();
           reader.onload = async (event) => {
             const result = event.target?.result;
-            if (typeof result === "string") {
-              file.encodedBuffer = Buffer.from(result, "utf-8").toString(
-                "base64",
-              );
-            } else if (result instanceof ArrayBuffer) {
-              file.encodedBuffer = Buffer.from(new Uint8Array(result)).toString(
-                "base64",
-              );
+            if (result instanceof ArrayBuffer) {
+              // raw bytes travel over IPC as a structured-cloned Uint8Array
+              file.data = new Uint8Array(result);
             } else {
               logit("🚫 Invalid file pasted");
               toast({
@@ -252,16 +248,18 @@ const MainContent = ({
       });
     };
     window.addEventListener("paste", handlePasteEvent);
-    window.electron.on(
+    const offSuccess = window.electron.on(
       ELECTRON_COMMANDS.PASTE_IMAGE_SAVE_SUCCESS,
       handlePasteImageSaveSuccess,
-    );
-    window.electron.on(
+    ) as unknown as () => void;
+    const offError = window.electron.on(
       ELECTRON_COMMANDS.PASTE_IMAGE_SAVE_ERROR,
       handlePasteImageSaveError,
-    );
+    ) as unknown as () => void;
     return () => {
       window.removeEventListener("paste", handlePasteEvent);
+      offSuccess?.();
+      offError?.();
     };
   }, [t, outputPath]);
 
