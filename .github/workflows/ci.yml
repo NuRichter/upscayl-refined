@@ -19,7 +19,7 @@ jobs:
       - name: Type-check renderer
         run: npx tsc --noEmit -p renderer
       - name: Engine unit tests
-        run: node --test export/test/
+        run: node --test "export/test/*.test.js"
       - name: Validate translations
         run: node scripts/validate-schema.js
       - name: Build renderer

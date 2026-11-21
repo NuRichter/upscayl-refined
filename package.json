@@ -48,7 +48,7 @@
     "dist:linux": "npm run build && electron-builder --linux",
     "validate-schema": "node scripts/validate-schema.js",
     "engine:cli": "tsc && node export/electron/engine/cli.js",
-    "test": "tsc && node --test export/test/",
+    "test": "tsc && node --test \"export/test/*.test.js\"",
     "postinstall": "node scripts/ensure-electron.js"
   },
   "build": {
